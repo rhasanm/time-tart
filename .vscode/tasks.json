@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "ui:dev",
+        "type": "shell",
+        "isBackground": true,
+        "command": "trunk",
+        "args": ["serve"],
+        "problemMatcher": [
+          {
+            "owner": "custom",
+            "pattern": [
+              {
+                "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                "file": 1,
+                "line": 2,
+                "column": 3,
+                "severity": 4,
+                "message": 5
+              }
+            ],
+            "background": {
+              "activeOnStart": true,
+              "beginsPattern": "Starting development server...",
+              "endsPattern": "Development server running|Server stopped"
+            }
+          }
+        ]
+      },
+      {
+        "label": "ui:build",
+        "type": "shell",
+        "command": "trunk",
+        "args": ["build"]
+      }
+    ]
+  }
